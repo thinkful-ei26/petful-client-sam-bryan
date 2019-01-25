@@ -11,6 +11,7 @@ import { deleteCat, deleteDog } from '../actions';
       this.props.dispatch(fetchCat())
       console.log(this.props)
         this.props.dispatch(fetchDog())
+        
     } 
 
     render() {
