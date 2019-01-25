@@ -1,0 +1,2 @@
+
+echo '{"extends":"react-app"}' >> .eslintrc
