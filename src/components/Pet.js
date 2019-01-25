@@ -2,25 +2,36 @@ import React from 'react';
 import {connect} from 'react-redux';
 import './pet.css';
 
+// Make your initial state look like a copy of final state. (All data we're using set to '' or null or similar in initial state)
+// If no loading inside component. In Dashbaord, only render component if prop in das
 export class Pet extends React.Component {
 
-    butonclicked(){
-        console.log('button clicked');
+    adoptClicked(e){
+        console.log('adopt clicked');
+        e.preventDefault()
+        this.props.adopt()
+        
+
     }
+
   render() {
-    return(
+ return (
         <div>
       <header>
-        <h2>Animal Name</h2>
-        <img src='' alt='animal'></img>
+        <h2>{this.props.pet.data.name}</h2>
+        <img src={this.props.pet.data.imageURL} alt={this.props.pet.data.imageDescription}></img>
       </header>
       <main>
-        <dl>
-         <dt>Sex:</dt>
+{/* DL is description list.. Good way to display key/vaue pairs. (aka definition list) DD - designated designation (Sex: DD, this.props.data.sex: DT) */}
+      <dl>      
+         <dt>Sex: </dt>
+           <dd>{this.props.pet.data.sex}</dd>
          <dt>Age:</dt>
+           <dd>{this.props.pet.data.age}</dd>
          <dt>Breed:</dt>
+           <dd>{this.props.pet.data.breed}</dd>
          <dt>Story:</dt>
-         <button onClick={() =>this.props.butonclicked()}>Adopt Me!</button>
+          <input type="button" value="Adopt Me!" onClick={(e) => this.adoptClicked(e)} />
        </dl>
      </main>
      </div>

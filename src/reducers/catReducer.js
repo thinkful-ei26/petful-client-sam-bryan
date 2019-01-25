@@ -33,7 +33,7 @@ const catReducer = (state = initialState, action) => {
     case 'DELETE_CAT_SUCCESS':
       return {
         ...state,
-        data: action.data,
+        data: null,
         loading: false
       }
       case 'DELETE_CAT_ERROR':

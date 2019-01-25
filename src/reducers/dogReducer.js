@@ -33,7 +33,7 @@ const dogReducer = (state = initialState, action) => {
     case 'DELETE_DOG_SUCCESS':
       return {
         ...state,
-        data: action.data,
+        data: null,
         loading: false
       }
       case 'DELETE_DOG_ERROR':

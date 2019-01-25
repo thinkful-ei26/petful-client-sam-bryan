@@ -3,22 +3,27 @@ import {connect} from 'react-redux';
 import './dashboard.css';
 import Pet from './Pet'
 import {fetchCat, fetchDog} from '../actions/index'
+import { deleteCat, deleteDog } from '../actions';
+
 
  class Dashboard extends React.Component {
     componentDidMount() {
-        console.log(this.props.userId)
-        this.props.dispatch(fetchCat())
+      this.props.dispatch(fetchCat())
+      console.log(this.props)
         this.props.dispatch(fetchDog())
     } 
 
     render() {
-        return (
+console.log('>>',this.props)
+      return (this.props.dogToAdopt.data === null || this.props.catToAdopt.data === null) 
+      ? <span>loading</span>
+      : (
             <div>
               <section className='catToAdopt'>
-                <Pet dogToAdopt={this.props.dogToAdopt}/>
+                <Pet pet={this.props.dogToAdopt} adopt={() => this.props.dispatch(deleteDog())}/>
               </section>
-              <section className='dogToAdopt'>
-                <Pet catToAdopt={this.props.catToAdopt}/>
+              <section className='catToAdopt'>
+                <Pet pet={this.props.catToAdopt} adopt={() => this.props.dispatch(deleteCat())}/>
               </section>
             </div>
 
